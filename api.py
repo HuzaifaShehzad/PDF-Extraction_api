@@ -14,11 +14,7 @@ def load_data():
     with open('combined.json', 'r', encoding='utf-8') as f:
         return json.load(f)
 
-@app.get("/")
-def root():
-    return {"message": "Hello World"}
-
-@app.post("/upload")
+@app.post("/")
 def upload_pdf(file: UploadFile = File(...)):
     if not file.filename.endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files allowed")
@@ -41,3 +37,4 @@ def upload_pdf(file: UploadFile = File(...)):
 
 
     
+
